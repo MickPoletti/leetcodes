@@ -1,9 +1,13 @@
 #include <map>
+#include <stdexcept>
 #include <vector>
 
 class Solution {
 public:
   int majorityElement(std::vector<int> &nums) {
+    if (nums.empty()) {
+      throw std::invalid_argument("Input vector cannot be empty");
+    }
     int n = nums.size();
     int greatest = 0;
     int return_num = 0;
