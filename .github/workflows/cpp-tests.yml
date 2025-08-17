@@ -11,14 +11,14 @@ jobs:
     - name: Install build tools
       run: sudo apt-get update && sudo apt-get install -y build-essential cmake
 
+    - name: Create build directory
+      run: mkdir -p c++/build
+
     - name: Configure CMake
-      working-directory: c++/build
-      run: cmake ..
+      run: cmake -B c++/build -S c++
 
     - name: Build tests
-      working-directory: c++/build
-      run: make
+      run: cmake --build c++/build
 
     - name: Run tests
-      working-directory: c++/build
-      run: ./majority_element_test
+      run: c++/build/majority_element_test
